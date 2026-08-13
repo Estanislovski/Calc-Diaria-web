@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de Diárias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--<nav>
+        <a href="cad_diarias.html">Cadastro de Valores</a>
+        <a href="calc_diarias.html">Calculadora de Diárias</a>
+    </nav>
+    -->
+    <header>
+        <h1>Calculadora de Diárias</h1>
+        <p>Esse app calcula automaticamente os valores de diárias a serem pagos considerando:</p>
+        <ul>
+            <li>Cargo do servidor;</li>
+            <li>Tempo da viagem;</li>
+            <li>Destino.</li>
+        </ul>
+    </header>
+
+    <main>
+        <form action="#">
+            <div class="data">
+                <label for="saida">Saída:</label>
+                <input type="datetime-local" id="saida" name="saida">
+
+                <label for="retorno">Retorno:</label>
+                <input type="datetime-local" id="retorno" name="retorno">
+            </div>
+            <br>
+            <div class="destino">
+                <label for="cargo">Cargo:</label>
+                <select name="cargo" id="cargo">
+                    <option value="">Selecione</option>
+                    <option value="prefeito">Prefeito e Vice-Prefeito</option>
+                    <option value="secretario">Secretários Municipais, Procurador-Geral e Presidente de Autarquia ou Fundação</option>
+                    <option value="servidor">Cargos em comissão, Servidores e/ou empregados públicos</option>
+                </select>
+            </div>
+            <br>
+            <div class="capital">
+                <label for="distancia">Distância da viagem (km)</label>
+                <input type="number" id="distancia" min="0" placeholder="Ex: 300">
+                <input type="checkbox" id="capitalfederal">
+                <label for="Capital Federal">Viagem para Capital Federal (Brasília)</label>
+            </div>
+            <br>
+            <div class="button">
+                <button type="button" onclick="gravar()">Calcular</button>
+                <button type="button" onclick="limpar()">Limpar</button>
+            </div>
+        </form>
+        <div id="resultados">
+            <h2 id="tituloResultado">Calculo Realizado!</h2>
+            <p><strong>Saída: </strong><span id="resultadoSaida"></span></p>
+            <p><strong>Retorno: </strong><span id="resultadoRetorno"></span></p>
+            <p><strong>Cargo: </strong><span id="resultadoCargo"></span></p>
+            <p><strong>Total de Diarias: </strong><span id="totalDiarias"></span></p>
+            <p><strong>Valor da Diaria: </strong><span id="valorDiaria"></span></p>
+            <p><strong>Valor Total: </strong><span id="valorTotal"></span></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desenvolvido por: <a href="https://github.com/Estanislovski" target="_blank" rel="noopener">Paulo Estanislovski</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
