@@ -40,34 +40,31 @@ function limpar() {
   document.getElementById("retorno").value = "";
   document.getElementById("cargo").value = "";
   document.getElementById("distancia").value = "";
-  document.getElementById("capitalfederal").value = "";
+  document.getElementById("capitalfederal").checked = false;
 }
 
 function gravar() {
-  let saida = document.getElementById("saida").value;
-  let retorno = document.getElementById("retorno").value;
+  let saida = new Date(document.getElementById("saida").value);
+  let retorno = new Date(document.getElementById("retorno").value);
   let cargo = document.getElementById("cargo").value;
   let distancia = document.getElementById("distancia").value;
   let capitalfederal = document.getElementById("capitalfederal");
   let cargocompleto = "verificar"
 
+  //validação de preenchimento dos campos
   if (saida == "") {
-    ;
     alert("Informe a data e hora de saída!");
     return;
   }
   if (retorno == "") {
-    ;
     alert("Informe a data e hora de retorno!");
     return;
   }
   if (cargo == "") {
-    ;
     alert("Selecione um cargo!");
     return;
   }
   if (distancia == "" && capitalfederal.checked == false) {
-    ;
     alert("Informe a distancia até o destino!");
     return;
   }
@@ -77,9 +74,9 @@ function gravar() {
   let valor = 0
   if (capitalfederal.checked == true) {
     valor = distanciaCargo.capitalFederal
-    console.log("if")
+    //console.log("if")
   } else {
-    console.log("else")
+    //console.log("else")
     for (const chave of Object.keys(distanciaCargo)) {
       if (parseInt(distancia, 10) <= parseInt(chave, 10)) {
         console.log("Distância calculada", distanciaCargo[chave], distancia)
@@ -89,6 +86,24 @@ function gravar() {
     }
   }
 
+  //calcular o total de diarias
+  let horas = (retorno - saida) / 3600000
+  //console.log(horas)
+
+  //converter horas em dias e armazenar horas restantes
+  let dias = Math.floor(horas / 24)
+  horas -= (dias * 24)
+  //console.log(horas)
+
+  if (horas >= 12){
+    //console.log("1")
+    dias += 1;
+  }else if (horas >= 4){
+    //console.log("0,5")
+    dias += 0.5;
+  }
+
+  //completar os nomes para apresentação ao úsuario
   if (cargo == "prefeito") {
     cargocompleto = "Prefeito e Vice-Prefeito"
   } else if (cargo == "secretario") {
@@ -99,11 +114,11 @@ function gravar() {
 
   document.getElementById("resultados").style.display = "block";
   document.getElementById("tituloResultado").style.color = "blue";
-  document.getElementById("resultadoSaida").textContent = saida;
-  document.getElementById("resultadoRetorno").textContent = retorno;
+  document.getElementById("resultadoSaida").textContent = saida.toLocaleString("pt-BR");
+  document.getElementById("resultadoRetorno").textContent = retorno.toLocaleString ("pt-BR");
   document.getElementById("resultadoCargo").textContent = cargocompleto;
-  document.getElementById("totalDiarias").textContent = "Ainda tenho de aprender a calcular isso!";
+  document.getElementById("totalDiarias").textContent = dias;
   document.getElementById("valorDiaria").textContent = valor;
-  document.getElementById("valorTotal").textContent = "totalDiarias * valor";
+  document.getElementById("valorTotal").textContent = dias * valor;
 
 }
