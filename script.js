@@ -68,6 +68,10 @@ function gravar() {
     alert("Informe a distancia até o destino!");
     return;
   }
+  if (retorno <= saida) {
+    alert("Data de Retorno menor ou igual a Saída!");
+    return;
+  }
 
   let distanciaCargo = diarias[cargo]
 
@@ -95,30 +99,29 @@ function gravar() {
   horas -= (dias * 24)
   //console.log(horas)
 
-  if (horas >= 12){
+  if (horas >= 12) {
     //console.log("1")
     dias += 1;
-  }else if (horas >= 4){
+  } else if (horas >= 4) {
     //console.log("0,5")
     dias += 0.5;
   }
-
+  console.log(cargo);
   //completar os nomes para apresentação ao úsuario
   if (cargo == "prefeito") {
-    cargocompleto = "Prefeito e Vice-Prefeito"
+    cargocompleto = "Prefeito e Vice-Prefeito";
   } else if (cargo == "secretario") {
-    cargocompleto = "Secretários Municipais, Procurador-Geral e Presidente de Autarquia ou Fundação"
+    cargocompleto = "Secretários Municipais, Procurador-Geral e Presidente de Autarquia ou Fundação";
   } else {
-    cargocompleto == "Cargos em comissão, Servidores e/ou empregados públicos"
+    cargocompleto = "Cargos em comissão, Servidores e/ou empregados públicos";
   }
 
   document.getElementById("resultados").style.display = "block";
-  document.getElementById("tituloResultado").style.color = "blue";
   document.getElementById("resultadoSaida").textContent = saida.toLocaleString("pt-BR");
-  document.getElementById("resultadoRetorno").textContent = retorno.toLocaleString ("pt-BR");
+  document.getElementById("resultadoRetorno").textContent = retorno.toLocaleString("pt-BR");
   document.getElementById("resultadoCargo").textContent = cargocompleto;
   document.getElementById("totalDiarias").textContent = dias;
-  document.getElementById("valorDiaria").textContent = valor;
-  document.getElementById("valorTotal").textContent = dias * valor;
+  document.getElementById("valorDiaria").textContent = valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  document.getElementById("valorTotal").textContent = (dias * valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 }
