@@ -1,23 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: rgb(241, 241, 241);
     font-family: Arial, Helvetica, sans-serif;
     color: #1f1f1f;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/*div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}*/
-
-header {
+header,
+nav,
+main,
+footer {
     width: 90%;
     max-width: 1000px;
-    min-width: 700PX;
-    margin-left: 30px;
-    background-color: rgb(236, 248, 255);
+    min-width: 320px;
+    margin: 0 0 20px 0;
     padding: 20px;
+}
+
+header {
+    background-color: rgb(236, 248, 255);
 }
 
 header h1 {
@@ -32,13 +40,8 @@ header p {
 }
 
 nav {
-    width: 90%;
     text-align: center;
-    max-width: 1000px;
-    min-width: 700PX;
-    margin: 0 30px 0px 30px;
     background-color: #163a5c;
-    padding: 20px;
 }
 
 nav a {
@@ -52,15 +55,9 @@ nav a:hover {
 }
 
 main {
-    width: 90%;
-    max-width: 1000px;
-    min-width: 700PX;
-    margin: 0 30px 0 30px;
     background-color: white;
     border: 1px solid #cccccc;
     border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
 }
 
 ul {
@@ -80,16 +77,19 @@ form {
 
 .data {
     display: flex;
+    align-items: center;
     gap: 5px;
 }
 
 .destino {
     display: flex;
+    align-items: center;
     gap: 5px;
 }
 
 .capital {
     display: flex;
+    align-items: center;
     gap: 5px;
 }
 
@@ -98,10 +98,12 @@ label {
 }
 
 input[type="text"],
-input[type="datetime-local"] input[type="number"],
+input[type="datetime-local"],
+input[type="number"],
 select {
     width: 100%;
-    box-sizing: content-box;
+    padding: 6px 8px;
+    margin-top: 4px;
 }
 
 button {
@@ -124,14 +126,10 @@ button:hover {
 }
 
 footer {
-    width: 90%;
     text-align: center;
-    max-width: 1000px;
-    min-width: 700PX;
-    margin: 0 30px 0px 30px;
     background-color: #163a5c;
-    padding: 20px;
     color: white;
+    margin-bottom: 0;
 }
 
 footer a {
