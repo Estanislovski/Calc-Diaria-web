@@ -73,7 +73,8 @@ function gravar() {
   if (distancia == "" && capitalfederal.checked == false) {
     alert("Informe a distancia até o destino!");
     return;
-  } else if (distancia <= 0) {
+  }
+    if (distancia <= 0) {
     alert("Distancia da viagem não pode ser inferior a 1km!");
     return;
   } else if (distancia > 5000) {
