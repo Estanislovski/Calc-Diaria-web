@@ -54,6 +54,11 @@ nav a:hover {
     color: pink;
 }
 
+nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 main {
     background-color: white;
     border: 1px solid #cccccc;
@@ -140,4 +145,91 @@ footer a {
 
 footer a:hover {
     color: pink;
+}
+
+/* ===== Manual de Uso ===== */
+
+.manual main {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.manual h2 {
+    color: #163a5c;
+    font-size: 24px;
+    margin-top: 28px;
+}
+
+.manual section {
+    margin-bottom: 10px;
+}
+
+.glossario {
+    list-style: none;
+    padding: 0;
+}
+
+.glossario li {
+    background-color: #eef5fb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.passo {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background-color: #f8fbff;
+    border: 2px solid #cfe8ff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.passo-numero {
+    flex: 0 0 auto;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.passo-texto h3 {
+    margin: 0 0 6px 0;
+    font-size: 20px;
+}
+
+.passo-texto p {
+    margin: 0 0 6px 0;
+}
+
+.dica {
+    background-color: #fff8e1;
+    border-left: 6px solid #ffca28;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.voltar-btn {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.voltar-btn:hover {
+    background-color: #1d4ed8;
 }
