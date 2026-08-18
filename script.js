@@ -62,7 +62,7 @@ function gravar() {
     alert("Informe a data e hora de retorno!");
     return;
   }
-    if (retorno <= saida) {
+  if (retorno <= saida) {
     alert("Data de Retorno menor ou igual a Saída!");
     return;
   }
@@ -70,11 +70,12 @@ function gravar() {
     alert("Selecione um cargo!");
     return;
   }
-  if (distancia == "" && capitalfederal.checked == false) {
+  if (capitalfederal.checked == true) {
+
+  } else if (distancia == "") {
     alert("Informe a distancia até o destino!");
     return;
-  }
-    if (distancia <= 0) {
+  } else if (distancia <= 0) {
     alert("Distancia da viagem não pode ser inferior a 1km!");
     return;
   } else if (distancia > 5000) {
