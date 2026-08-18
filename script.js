@@ -44,12 +44,14 @@ function limpar() {
 }
 
 function gravar() {
-  let saida = new Date(document.getElementById("saida").value);
-  let retorno = new Date(document.getElementById("retorno").value);
+  let saida = document.getElementById("saida").value;
+  let retorno = document.getElementById("retorno").value;
   let cargo = document.getElementById("cargo").value;
   let distancia = document.getElementById("distancia").value;
   let capitalfederal = document.getElementById("capitalfederal");
   let cargocompleto = "verificar"
+  let dsaida = new Date(saida)
+  let dretorno = new Date(retorno)
 
   //validação de preenchimento dos campos
   if (saida == "") {
@@ -60,6 +62,10 @@ function gravar() {
     alert("Informe a data e hora de retorno!");
     return;
   }
+    if (retorno <= saida) {
+    alert("Data de Retorno menor ou igual a Saída!");
+    return;
+  }
   if (cargo == "") {
     alert("Selecione um cargo!");
     return;
@@ -67,11 +73,14 @@ function gravar() {
   if (distancia == "" && capitalfederal.checked == false) {
     alert("Informe a distancia até o destino!");
     return;
-  }
-  if (retorno <= saida) {
-    alert("Data de Retorno menor ou igual a Saída!");
+  } else if (distancia <= 0) {
+    alert("Distancia da viagem não pode ser inferior a 1km!");
+    return;
+  } else if (distancia > 5000) {
+    alert("Distancia informada não pode ser maior que 5000km!")
     return;
   }
+
 
   let distanciaCargo = diarias[cargo]
 
@@ -91,7 +100,7 @@ function gravar() {
   }
 
   //calcular o total de diarias
-  let horas = (retorno - saida) / 3600000
+  let horas = (dretorno - dsaida) / 3600000
   //console.log(horas)
 
   //converter horas em dias e armazenar horas restantes
@@ -117,8 +126,8 @@ function gravar() {
   }
 
   document.getElementById("resultados").style.display = "block";
-  document.getElementById("resultadoSaida").textContent = saida.toLocaleString("pt-BR");
-  document.getElementById("resultadoRetorno").textContent = retorno.toLocaleString("pt-BR");
+  document.getElementById("resultadoSaida").textContent = dsaida.toLocaleString("pt-BR");
+  document.getElementById("resultadoRetorno").textContent = dretorno.toLocaleString("pt-BR");
   document.getElementById("resultadoCargo").textContent = cargocompleto;
   document.getElementById("totalDiarias").textContent = dias;
   document.getElementById("valorDiaria").textContent = valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
